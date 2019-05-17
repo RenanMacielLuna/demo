@@ -19,23 +19,36 @@ public class Book {
     private Long id;
     private String title;
     private String isbn;
-    private String publisher;
+    @OneToOne
+//    @JoinTable(name = )
+    private Publisher publisher;
 
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 
-    public Book(String title, String isbn, String publisher) {
+    public Book(String title, String isbn, Publisher publisher) {
         setTitle(title);
         setIsbn(isbn);
         setPublisher(publisher);
     }
 
-    public Book(String title, String isbn, String publisher, Set<Author> authors) {
+    public Book(String title, String isbn, Publisher publisher, Set<Author> authors) {
         setTitle(title);
         setIsbn(isbn);
         setPublisher(publisher);
         setAuthors(authors);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", publisher='" + publisher.getName() + '\'' +
+                ", authors=" + authors +
+                '}';
     }
 }
