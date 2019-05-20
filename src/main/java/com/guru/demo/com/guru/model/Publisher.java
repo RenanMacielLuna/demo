@@ -1,9 +1,7 @@
 package com.guru.demo.com.guru.model;
 
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,9 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@Data
 @Getter
-@Setter
+@Setter(value = AccessLevel.PACKAGE)
+@Builder(toBuilder = true)
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
+@NoArgsConstructor (access = AccessLevel.PACKAGE)
 public class Publisher {
 
     @Id

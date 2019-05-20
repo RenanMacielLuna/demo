@@ -25,7 +25,8 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        initData();
+//        The line below is commented to not generate duplicate row Content, except ID
+//        initData();
     }
 
     private void initData(){
